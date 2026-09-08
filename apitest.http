@@ -1,0 +1,8 @@
+### Emergency
+POST http://127.0.0.1:5000/api/login
+Content-Type: application/json
+
+{
+    "username": "staff01",
+    "password": "demo123"
+}
