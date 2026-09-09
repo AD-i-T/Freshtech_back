@@ -1,5 +1,6 @@
 import math
 from flask import Flask, jsonify, request
+from flask import CORS
 from database import get_db_connection
 
 #calcing distance by Havensine formula
@@ -37,6 +38,7 @@ def determine_priority(condition):
     return "Normal"
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def home():
