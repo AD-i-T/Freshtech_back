@@ -1,6 +1,6 @@
 import math
 from flask import Flask, jsonify, request
-from flask import CORS
+from flask_cors import CORS
 from database import get_db_connection
 
 #calcing distance by Havensine formula
