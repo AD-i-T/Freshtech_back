@@ -206,5 +206,5 @@ connection.commit()
 connection.close()
 
 print("Database is ok")
-# adding this just so git commits
+# adding this just so git commits xyz
 
