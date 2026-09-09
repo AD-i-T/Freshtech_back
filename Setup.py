@@ -37,9 +37,60 @@ connection.execute("""
     )
 """)
 
+connection.execute("""
+    CREATE TABLE IF NOT EXISTS medicines (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        generic_name TEXT,
+        composition TEXT,
+        stock INTEGER DEFAULT 0,
+        hospital_id INTEGER,
+        FOREIGN KEY (hospital_id) REFERENCES hospitals(id)
+    )
+""")
+
 connection.execute("DELETE FROM patients")
 connection.execute("DELETE FROM hospitals")
 connection.execute("DELETE FROM users")
+connection.execute("DELETE FROM medicines")
+
+medicines = [
+    (
+        "Paracetamol 500mg",
+        "Paracetamol",
+        "Paracetamol",
+        120,
+        1
+    ),
+    (
+        "Amoxicillin 500mg",
+        "Amoxicillin",
+        "Amoxicillin",
+        50,
+        1
+    ),
+    (
+        "Ibuprofen 400mg",
+        "Ibuprofen",
+        "Ibuprofen",
+        0,
+        2
+    ),
+    (
+        "Cetirizine 10mg",
+        "Cetirizine",
+        "Cetirizine",
+        80,
+        2
+    ),
+    (
+        "ORS",
+        "Oral Rehydration Salts",
+        "Sodium chloride + potassium chloride + glucose",
+        35,
+        3
+    )
+]
 
 users = [
     ("patient01", "demo123", "patient"),
@@ -120,6 +171,18 @@ hospitals = [
         1
     )
 ]
+
+connection.executemany("""
+    INSERT INTO medicines
+    (
+        name,
+        generic_name,
+        composition,
+        stock,
+        hospital_id
+    )
+    VALUES (?, ?, ?, ?, ?)
+""", medicines)
 
 connection.executemany("""
     INSERT INTO users

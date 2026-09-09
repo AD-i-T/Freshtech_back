@@ -54,7 +54,6 @@ pynput==1.8.1
 pypresence==4.6.1
 pystray==0.19.5
 python-dateutil==2.9.0.post0
-pywin32==308
 pyzmq==26.2.0
 requests==2.32.5
 screeninfo==0.8.1
